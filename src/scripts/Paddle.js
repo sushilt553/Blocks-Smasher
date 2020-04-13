@@ -1,11 +1,11 @@
 
 class Paddle {
-    constructor(canvas, ctx) {
+    constructor(canvas, ctx, paddleHeight, paddleWidth, paddleX) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.paddleHeight = 10;
-        this.paddleWidth = 75;
-        this.paddleX = (this.canvas.width - this.paddleWidth);
+        this.paddleHeight = paddleHeight;
+        this.paddleWidth = paddleWidth;
+        this.paddleX = paddleX
     }
 
     drawPaddle() {
