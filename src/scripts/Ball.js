@@ -1,11 +1,11 @@
 
 class Ball {
-    constructor(canvas, ctx, x, y) {
+    constructor(canvas, ctx, x, y, ballRadius) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.x = x;
         this.y = y;
-        this.ballRadius = 10;
+        this.ballRadius = ballRadius;
     }
 
     drawBall() {
