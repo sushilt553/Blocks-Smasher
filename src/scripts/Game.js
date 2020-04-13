@@ -64,9 +64,13 @@ class Game {
         this.checkWallHit();
 
         if (this.rightClick) {
-            this.paddleX += 7;
+            if (this.paddleX + this.paddleWidth < this.canvas.width ){
+                this.paddleX += 7;
+            }
         }else if (this.leftClick) {
-            this.paddleX -= 7;
+            if (this.paddleX > 0) {
+                this.paddleX -= 7;
+            }
         }
 
         this.x += this.dx;
