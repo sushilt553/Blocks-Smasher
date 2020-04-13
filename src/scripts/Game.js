@@ -47,9 +47,13 @@ class Game {
             this.dx = - this.dx;
         }else if(this.y + this.dy < this.ballRadius) {
             this.dy = - this.dy;
-        }else if (this.y + this.dy > this.canvas.height + this.ballRadius) {
-            alert("Game Over");
-            clearInterval();
+        }else if (this.y + this.dy > this.canvas.height - this.ballRadius) {
+            if (this.x > this.paddleX && this.x < this.paddleX + this.paddleWidth) {
+                this.dy = - this.dy;
+            }else {
+                alert("Game Over");
+                clearInterval();
+            }
         }
     }
 
