@@ -1,4 +1,4 @@
-import {restartButtonImage} from "./Images";
+// import {restartButtonImage} from "./Images";
 
 class GameOver {
     constructor(canvas, ctx, text) {
@@ -13,11 +13,11 @@ class GameOver {
         this.ctx.fillText(this.text, 180, this.canvas.height / 2);
     }
 
-    drawRestartButton() {
-        this.ctx.beginPath();
-        this.ctx.drawImage(restartButtonImage, 420, (this.canvas.height / 2) + 30, 50, 50);
-        this.ctx.closePath();
-    }
+    // drawRestartButton() {
+    //     this.ctx.beginPath();
+    //     this.ctx.drawImage(restartButtonImage, 420, (this.canvas.height / 2) + 30, 50, 50);
+    //     this.ctx.closePath();
+    // }
 }
 
 export default GameOver;

@@ -3,7 +3,9 @@ import Brick from './Brick';
 import Paddle from './Paddle';
 import Score from './Score';
 import GameOver from './GameOver';
-import { baseBallImage } from './Images';
+import ballImages from './BallsImages';
+import tileImages from './TilesImages';
+import { paddleImage } from './PaddleImage';
 import { brick_smash, lose_game } from './Sounds';
 import WinLevel from './WinLevel';
 
@@ -18,8 +20,10 @@ class Game {
         this.dx = 2;
         this.dy = -2;
 
-        this.brickRow = 1;
-        this.brickColumn = 1;
+        this.ballImage = ballImages[Math.floor(Math.random() * ballImages.length)];
+
+        this.brickRow = 4;
+        this.brickColumn = 5;
         this.brickWidth = 144;
         this.brickHeight = 30;
         this.brickPadding = 20; 
@@ -27,7 +31,7 @@ class Game {
         this.brickCount = this.brickRow * this.brickColumn;
         this.bricks = [];
 
-        this.paddleHeight = 10;
+        this.paddleHeight = 18;
         this.paddleWidth = 120;
         this.paddleX = this.canvas.width/2;
         // this.paddleX = (this.canvas.width - this.paddleWidth);
@@ -77,7 +81,7 @@ class Game {
         }else if(this.y + this.dy < this.ballRadius) {
             this.dy = - this.dy;
             return true;
-        }else if (this.y + this.dy > this.canvas.height - this.ballRadius) {
+        }else if (this.y + this.dy > this.canvas.height - this.ballRadius - this.paddleHeight) {
             if (this.x > this.paddleX && this.x < this.paddleX + this.paddleWidth) {
                 this.dy = - this.dy;
                 return true;
@@ -102,7 +106,8 @@ class Game {
         for (let i = 0; i < this.brickColumn; i++) {
             this.bricks[i] = [];
             for (let j = 0; j < this.brickRow; j++) {
-                this.bricks[i][j] = {x: 0, y: 0, status: true}
+                var color = tileImages[Math.floor(Math.random() * tileImages.length)]
+                this.bricks[i][j] = {x: 0, y: 0, color, status: true}
             }
         }
     }
@@ -139,7 +144,7 @@ class Game {
                     this.bricks[i][j].x = brickX;
                     this.bricks[i][j].y = brickY;
 
-                    singleBrick = new Brick(this.ctx, brickX, brickY, this.brickWidth, this.brickHeight);
+                    singleBrick = new Brick(this.ctx, brickX, brickY, this.brickWidth, this.brickHeight, brick.color);
                     singleBrick.drawBrick();
                 }
             }
@@ -158,9 +163,9 @@ class Game {
         var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 150, 30, `Score: ${this.points}`)
         score.drawScore();
         // const color = "assets/balls/ball1.png";
-        var ball = new Ball(this.ctx, 15, 15, baseBallImage, this.x, this.y);
+        var ball = new Ball(this.ctx, 20, 20, this.ballImage, this.x, this.y);
         // var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
-        var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX);
+        var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX, paddleImage);
 
         ball.drawBall();
         paddle.drawPaddle();
