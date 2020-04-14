@@ -18,3 +18,9 @@ airBallImage.src = "assets/balls/ball6.png";
 
 export const discoBallImage = new Image();
 discoBallImage.src = "assets/balls/ball7.png";
+
+export const playButtonImage = new Image();
+playButtonImage.src = "assets/playRestart/playButton.png";
+
+export const restartButtonImage = new Image();
+restartButtonImage.src = "assets/playRestart/restartButton.png";

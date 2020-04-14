@@ -2,6 +2,7 @@ import Ball from './Ball';
 import Brick from './Brick';
 import Paddle from './Paddle';
 import Score from './Score';
+import GameOver from './GameOver';
 import { baseBallImage } from './Images';
 import { brick_smash, lose_game } from './Sounds';
 
@@ -42,8 +43,6 @@ class Game {
         this.onClick = this.onClick.bind(this);
         this.offClick = this.offClick.bind(this);
         this.bricksObjectArray();
-        
-        // this.score = ;
 
         this.interval = setInterval(this.draw, 8);
 
@@ -82,8 +81,14 @@ class Game {
                 // this.dx += 1;
             }else {
                 // lose_game();
-                // alert("Game Over");
-                clearInterval();
+                var text = `Game Over!! Your score is ${this.points}`
+                
+                var gameOver = new GameOver(this.canvas, this.ctx, text)
+                gameOver.drawFinalScore();
+                // gameOver.drawRestartButton();
+                const restart = document.getElementById("restart");
+                restart.onclick = () => document.location.reload();
+                clearInterval(this.interval);
             }
         }
     }
