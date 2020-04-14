@@ -126,8 +126,9 @@ class Game {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawBricks();
-
-        var ball = new Ball(this.canvas, this.ctx, this.x, this.y, this.ballRadius);
+        // const image = require("../assets/balls/ball1.png");
+        // var ball = new Ball(15, 15, image, this.x, this.y, "image");
+        var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
         var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX);
 
         ball.drawBall();
