@@ -1,6 +1,9 @@
 import Ball from './Ball';
 import Brick from './Brick';
 import Paddle from './Paddle';
+import Score from './Score';
+import { baseBallImage } from './Images';
+import { brick_smash, lose_game } from './Sounds';
 
 class Game {
     constructor (canvas, ctx) {
@@ -25,6 +28,8 @@ class Game {
         this.paddleWidth = 75;
         this.paddleX = (this.canvas.width - this.paddleWidth);
 
+        this.points = 0;
+
         this.rightClick = false;
         this.leftClick = false;
 
@@ -37,6 +42,8 @@ class Game {
         this.onClick = this.onClick.bind(this);
         this.offClick = this.offClick.bind(this);
         this.bricksObjectArray();
+        
+        // this.score = ;
 
         this.interval = setInterval(this.draw, 8);
 
@@ -63,15 +70,19 @@ class Game {
     checkWallHit() {
         if (this.x + this.dx > this.canvas.width - this.ballRadius || this.x + this.dx < this.ballRadius) {
             this.dx = - this.dx;
+            return true;
             // this.dy -= 1;
         }else if(this.y + this.dy < this.ballRadius) {
             this.dy = - this.dy;
+            return true;
         }else if (this.y + this.dy > this.canvas.height - this.ballRadius) {
             if (this.x > this.paddleX && this.x < this.paddleX + this.paddleWidth) {
                 this.dy = - this.dy;
+                return true;
                 // this.dx += 1;
             }else {
-                alert("Game Over");
+                // lose_game();
+                // alert("Game Over");
                 clearInterval();
             }
         }
@@ -97,6 +108,8 @@ class Game {
                     if ((this.x > brick.x && this.x < brick.x + this.brickWidth) && (this.y > brick.y && this.y < brick.y + this.brickHeight)) {
                         this.dy = - this.dy;
                         brick.status = false;
+                        this.points += 1;
+                        return true;
                     }
                 }
             }
@@ -125,17 +138,26 @@ class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
         this.drawBricks();
-        // const image = require("../assets/balls/ball1.png");
-        // var ball = new Ball(15, 15, image, this.x, this.y, "image");
-        var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
+
+        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 150, 30, `Score: ${this.points}`)
+        score.drawScore();
+        // const color = "assets/balls/ball1.png";
+        var ball = new Ball(this.ctx, 15, 15, baseBallImage, this.x, this.y);
+        // var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
         var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX);
 
         ball.drawBall();
         paddle.drawPaddle();
 
-        this.detectCollision();
-        this.checkWallHit();
+        if (this.detectCollision()) {
+            // brick_smash();
+        };
+            
+        if (this.checkWallHit()) {
+            // brick_smash();
+        }
 
         if (this.rightClick) {
             if (this.paddleX + this.paddleWidth < this.canvas.width ){
