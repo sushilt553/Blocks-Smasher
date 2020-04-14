@@ -84,13 +84,14 @@ class Game {
                 // this.dx += 1;
             }else {
                 // lose_game();
-                var text = `Game Over!! Your score is ${this.points}`
+                const restart = document.getElementById("restart-button");
+                restart.classList.add("display");
+                restart.onclick = () => document.location.reload();
                 
+                var text = `Game Over!! Your score is ${this.points}`
                 var gameOver = new GameOver(this.canvas, this.ctx, text)
                 gameOver.drawFinalScore();
                 // gameOver.drawRestartButton();
-                const restart = document.getElementById("restart");
-                restart.onclick = () => document.location.reload();
                 clearInterval(this.interval);
             }
         }

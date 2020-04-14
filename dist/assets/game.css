@@ -17,6 +17,14 @@
     background-size: cover;
 }
 
+#restart-button {
+    position: absolute;
+    left: 49%;
+    top: 350px;
+    background-image: url("./playRestart/restartButton.png");
+    background-size: cover;
+}
+
 h1 {
     color: wheat;
     position: absolute;
@@ -28,4 +36,9 @@ h1 {
 .hidden {
     height: 0;
     display: none;
+}
+
+.display {
+    display: block;
+    height: 50px;
 }
