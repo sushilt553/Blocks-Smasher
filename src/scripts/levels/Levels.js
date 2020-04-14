@@ -1,18 +1,18 @@
 const level1 = {
-    tilesRow: 2,
-    tilesColumn: 2,
+    tilesRow: 1,
+    tilesColumn: 5,
     renderTime: 8
 }
 
 const level2 = {
-    tilesRow: 3,
-    tilesColumn: 3,
+    tilesRow: 2,
+    tilesColumn: 5,
     renderTime: 7
 }
 
 const level3 = {
-    tilesRow: 4,
-    tilesColumn: 4,
+    tilesRow: 3,
+    tilesColumn: 5,
     renderTime: 6
 }
 
