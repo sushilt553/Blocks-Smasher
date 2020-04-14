@@ -11,7 +11,7 @@ class Paddle {
     drawPaddle() {
         this.ctx.beginPath();
         this.ctx.rect(this.paddleX, this.canvas.height - this.paddleHeight, this.paddleWidth, this.paddleHeight);
-        this.ctx.fillStyle = "red";
+        this.ctx.fillStyle = "yellow";
         this.ctx.fill();
         this.ctx.closePath();
     }

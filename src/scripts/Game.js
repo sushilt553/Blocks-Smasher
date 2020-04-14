@@ -5,6 +5,7 @@ import Score from './Score';
 import GameOver from './GameOver';
 import { baseBallImage } from './Images';
 import { brick_smash, lose_game } from './Sounds';
+import WinLevel from './WinLevel';
 
 class Game {
     constructor (canvas, ctx) {
@@ -17,17 +18,19 @@ class Game {
         this.dx = 2;
         this.dy = -2;
 
-        this.brickRow = 5;
-        this.brickColumn = 5;
+        this.brickRow = 1;
+        this.brickColumn = 1;
         this.brickWidth = 144;
         this.brickHeight = 30;
         this.brickPadding = 20; 
         this.sidePadding = 50;
+        this.brickCount = this.brickRow * this.brickColumn;
         this.bricks = [];
 
         this.paddleHeight = 10;
-        this.paddleWidth = 75;
-        this.paddleX = (this.canvas.width - this.paddleWidth);
+        this.paddleWidth = 120;
+        this.paddleX = this.canvas.width/2;
+        // this.paddleX = (this.canvas.width - this.paddleWidth);
 
         this.points = 0;
 
@@ -114,6 +117,7 @@ class Game {
                         this.dy = - this.dy;
                         brick.status = false;
                         this.points += 1;
+                        this.brickCount -= 1;
                         return true;
                     }
                 }
@@ -143,7 +147,11 @@ class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+        if (this.brickCount === 0) {
+            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congratulations you won this level");
+            winLevelMessage.drawWinMessage();
+            clearInterval(this.interval);
+        }
         this.drawBricks();
 
         var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 150, 30, `Score: ${this.points}`)

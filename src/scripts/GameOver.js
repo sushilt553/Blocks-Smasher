@@ -1,4 +1,3 @@
-import Game from "./Game";
 import {restartButtonImage} from "./Images";
 
 class GameOver {
