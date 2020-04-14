@@ -6,20 +6,33 @@ class Game {
     constructor (canvas, ctx) {
         this.canvas = canvas;
         this.ctx = ctx;
+
         this.x = this.canvas.width / 2;
         this.y = this.canvas.height - 30;
         this.ballRadius = 10;
         this.dx = 2;
         this.dy = -2;
+
+        this.brickRow = 5;
+        this.brickColumn = 5;
+        this.brickWidth = 144;
+        this.brickHeight = 30;
+        this.brickPadding = 20; 
+        this.sidePadding = 50;
+
         this.paddleHeight = 10;
         this.paddleWidth = 75;
+        this.paddleX = (this.canvas.width - this.paddleWidth);
+
         this.rightClick = false;
         this.leftClick = false;
-        this.paddleX = (this.canvas.width - this.paddleWidth);
+
         this.draw = this.draw.bind(this);
         this.checkWallHit = this.checkWallHit.bind(this);
+
         this.onClick = this.onClick.bind(this);
         this.offClick = this.offClick.bind(this);
+
         this.interval = setInterval(this.draw, 10);
 
         document.addEventListener("keydown", this.onClick);
@@ -62,9 +75,17 @@ class Game {
 
         var ball = new Ball(this.canvas, this.ctx, this.x, this.y, this.ballRadius);
         var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX);
+        var brick;
+        for (let i = 0; i < this.brickColumn; i++) {
+            for (let j = 0; j < this.brickRow; j++){
+                brick = new Brick(this.ctx, (i * (this.brickWidth + this.brickPadding)) + this.sidePadding, (j * (this.brickHeight + this.brickPadding)) + this.sidePadding, this.brickWidth, this.brickHeight);
+                brick.drawBrick();
+            }
+        }
 
         ball.drawBall();
         paddle.drawPaddle();
+
         this.checkWallHit();
 
         if (this.rightClick) {
