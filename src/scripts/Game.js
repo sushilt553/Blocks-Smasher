@@ -6,6 +6,7 @@ import GameOver from './GameOver';
 import ballImages from './BallsImages';
 import tileImages from './TilesImages';
 import { paddleImage } from './PaddleImage';
+import levelsArray from './levels/Levels';
 import { brick_smash, lose_game } from './Sounds';
 import WinLevel from './WinLevel';
 
@@ -13,6 +14,8 @@ class Game {
     constructor (canvas, ctx) {
         this.canvas = canvas;
         this.ctx = ctx;
+        this.levels = levelsArray;
+        this.nextLevelIndex = 0;
 
         this.x = this.canvas.width / 2;
         this.y = this.canvas.height - 30;
