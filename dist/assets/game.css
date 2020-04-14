@@ -1,7 +1,31 @@
 #myCanvas {
+    position: relative;
     display: block;
     margin: 0 auto;
     background-image: url("./background/background2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#home-page {
+    position: absolute;
+    left: 45%;
+    top: 270px;
+    display: block;
+    margin: 0 auto;
+    background-image: url("./playRestart/playButton.png");
+    background-size: cover;
+}
+
+h1 {
+    color: wheat;
+    position: absolute;
+    font-size: 40px;
+    top: 180px;
+    left: 35%;
+}
+
+.hidden {
+    height: 0;
+    display: none;
 }
