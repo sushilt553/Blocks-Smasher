@@ -25,8 +25,8 @@ class Game {
 
         this.ballImage = ballImages[Math.floor(Math.random() * ballImages.length)];
 
-        this.brickRow = 4;
-        this.brickColumn = 5;
+        this.brickRow = this.levels[0].tilesRow;
+        this.brickColumn = this.levels[0].tilesColumn;
         this.brickWidth = 144;
         this.brickHeight = 30;
         this.brickPadding = 20; 
@@ -52,9 +52,11 @@ class Game {
 
         this.onClick = this.onClick.bind(this);
         this.offClick = this.offClick.bind(this);
+        this.bricksObjectArray = this.bricksObjectArray.bind(this);
         this.bricksObjectArray();
 
-        this.interval = setInterval(this.draw, 8);
+        this.start = this.start.bind(this);
+        this.start(this.levels[0].renderTime);
 
         document.addEventListener("keydown", this.onClick);
         document.addEventListener("keyup", this.offClick);
@@ -154,13 +156,13 @@ class Game {
         }
     }
 
+    start(renderTime) {
+        this.interval = setInterval(this.draw, renderTime);
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        if (this.brickCount === 0) {
-            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congratulations you won this level");
-            winLevelMessage.drawWinMessage();
-            clearInterval(this.interval);
-        }
+        
         this.drawBricks();
 
         var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 150, 30, `Score: ${this.points}`)
@@ -172,6 +174,30 @@ class Game {
 
         ball.drawBall();
         paddle.drawPaddle();
+
+        if (this.brickCount === 0) {
+            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congratulations you won this level");
+            winLevelMessage.drawWinMessage();
+
+            this.nextLevelIndex += 1;
+            this.x = this.canvas.width / 2;
+            this.y = this.canvas.height - 30;
+            this.dx = 2;
+            this.dy = -2;
+            this.brickRow = this.levels[this.nextLevelIndex].tilesRow;
+            this.brickColumn = this.levels[this.nextLevelIndex].tilesColumn;
+            this.brickCount = this.brickRow * this.brickColumn;
+            var renderTime = this.levels[this.nextLevelIndex].renderTime
+            this.bricks = [];
+            this.bricksObjectArray();
+
+            const nextLevel = document.getElementById("next-level");
+            clearInterval(this.interval);
+            nextLevel.onclick = () => {
+                this.start(renderTime);
+            }
+
+        }
 
         if (this.detectCollision()) {
             // brick_smash();
