@@ -2,6 +2,7 @@ body {
     background-image: url("./background/background11.png");
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
 }
 
 #myCanvas {
@@ -16,6 +17,38 @@ body {
 
 #mute {
     background-color: green;
+}
+
+#play-section {
+    color: white;
+    width: 25%;
+    margin-top: 5%;
+}
+
+#how-to-play {
+    text-align: center;
+}
+
+#how-to-play-button {
+    width: 70px;
+    height: 70px;
+}
+
+#keys {
+    width: 70px;
+    height: 60px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+}
+
+p {
+    margin-left: 8%;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
 }
 
 #home-page {
@@ -36,7 +69,19 @@ body {
     background-size: cover;
 }
 
-h1 {
+#next-level {
+    position: absolute;
+    left: 46%;
+    top: 390px;
+    padding: 10px;
+    background-color: purple;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
+    color: white;
+}
+
+#welcome {
     color: #fcde91;
     position: absolute;
     letter-spacing: 0.1em;
@@ -56,7 +101,6 @@ h1 {
 }
 
 .sound-buttons {
-    margin-left: 27%;
     margin-bottom: 10px;
     margin-top: 10px;
 }

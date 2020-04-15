@@ -24,15 +24,30 @@
     <audio id="level-finish" class="sound">
         <source src="assets/sounds/level_finish.mp3" type="audio/mpeg">
     </audio>
-    <div class="sound-buttons">
-        <i class="fas fa-volume-up volume-up" ></i>
-        <i class="fas fa-volume-mute volume-down" ></i>
-    </div>
-    <canvas id="myCanvas" width="900" height="650" ></canvas>
-    <h1 id="welcome">WELCOME TO BLOCKS SMASHER</h1>
-    <canvas id="home-page" width="200" height="200" ></canvas>
-    <canvas id="restart-button" class="hidden" width="50" height="50" ></canvas>
-    <h2 id="next-level">NEXT LEVEL</h2>
+    
+    <section id="play-section">
+        <div id="play-div">
+            <h1 id="how-to-play">HOW TO PLAY</h1>
+            <ul>
+                <li >Click <img id="how-to-play-button" src="assets/playRestart/playButton.png" /> to begin.</li> 
+                <li>Use the <img id="keys" src="assets/paddle/keyboard.png"> keys on your keyboard.</li> 
+            </ul>
+            <p>The ball will bounce in different directions based on where it hits the paddle. You are in control of the sliding paddle that can bounce the ball into the bricks above.</p>
+            <p>Use angles and rebounds to control the direction the ball moves and smash the bricks. You have 3 lives. If the ball falls into the abyss below, you'll lose a life. </p>
+            <p>Use the SPACEBAR to pause/continue the game anytime.</p>
+        </div>
+    </section>
+    <section id="main-section">
+        <div class="sound-buttons">
+            <i class="fas fa-volume-up volume-up" ></i>
+            <i class="fas fa-volume-mute volume-down" ></i>
+        </div>
+        <canvas id="myCanvas" width="900" height="650" ></canvas>
+        <h1 id="welcome">WELCOME TO BLOCKS SMASHER</h1>
+        <canvas id="home-page" width="200" height="200" ></canvas>
+        <canvas id="restart-button" class="hidden" width="50" height="50" ></canvas>
+        <button id="next-level" class="hidden">NEXT LEVEL</button>
+    </section>
     
     <!-- <script>
         let sound = document.getElementById("game-start");

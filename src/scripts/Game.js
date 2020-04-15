@@ -229,16 +229,18 @@ class Game {
         paddle.drawPaddle();
 
         if (this.brickCount === 0) {
-            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congratulations you won this level");
+            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congrats you won this level!");
             winLevelMessage.drawWinMessage();
 
             this.nextLevelIndex += 1;
             this.reset();
             var renderTime = this.levels[this.nextLevelIndex].renderTime
 
-            const nextLevel = document.getElementById("next-level");
             clearInterval(this.interval);
+            const nextLevel = document.getElementById("next-level");
+            nextLevel.classList.add("display");
             nextLevel.onclick = () => {
+                nextLevel.classList.remove("display");
                 this.start(renderTime);
             }
 

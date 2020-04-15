@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const play = document.getElementById("home-page");
     const welcome = document.getElementById("welcome");
+    const instructions = document.getElementById("play-div");
     play.addEventListener("click", () => {
         muteMusic();
+        instructions.classList.add("hidden");
         play.classList.add("hidden");
         welcome.classList.add("hidden");
         new Game(canvas, ctx);
