@@ -92,7 +92,7 @@ class Game {
                 return true;
                 // this.dx += 1;
             }else {
-                // lose_game();
+                lose_game();
                 const restart = document.getElementById("restart-button");
                 restart.classList.add("display");
                 restart.onclick = () => document.location.reload();
@@ -200,11 +200,11 @@ class Game {
         }
 
         if (this.detectCollision()) {
-            // brick_smash();
+            brick_smash();
         };
             
         if (this.checkWallHit()) {
-            // brick_smash();
+            brick_smash();
         }
 
         if (this.rightClick) {
