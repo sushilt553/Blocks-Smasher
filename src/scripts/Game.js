@@ -44,6 +44,7 @@ class Game {
         // this.paddleX = (this.canvas.width - this.paddleWidth);
 
         this.points = 0;
+        this.lives = 3;
 
         this.rightClick = false;
         this.leftClick = false;
@@ -53,6 +54,8 @@ class Game {
 
         this.drawBricks = this.drawBricks.bind(this);
         this.detectCollision = this.detectCollision.bind(this);
+
+        this.reset = this.reset.bind(this);
 
         this.onClick = this.onClick.bind(this);
         this.offClick = this.offClick.bind(this);
@@ -97,15 +100,21 @@ class Game {
                 // this.dx += 1;
             }else {
                 this.loseGame.play();
-                const restart = document.getElementById("restart-button");
-                restart.classList.add("display");
-                restart.onclick = () => document.location.reload();
-                
-                var text = `Game Over!! Your score is ${this.points}`
-                var gameOver = new GameOver(this.canvas, this.ctx, text)
-                gameOver.drawFinalScore();
-                // gameOver.drawRestartButton();
-                clearInterval(this.interval);
+                this.lives -= 1;
+                if (this.lives === 0){
+                    const restart = document.getElementById("restart-button");
+                    restart.classList.add("display");
+                    restart.onclick = () => document.location.reload();
+                    
+                    var text = `Game Over!! Your score is ${this.points}`
+                    var gameOver = new GameOver(this.canvas, this.ctx, text)
+                    gameOver.drawFinalScore();
+                    // gameOver.drawRestartButton();
+                    clearInterval(this.interval);
+                }else{
+                    this.reset();
+                }
+
             }
         }
     }
@@ -164,12 +173,24 @@ class Game {
         this.interval = setInterval(this.draw, renderTime);
     }
 
+    reset() {
+        this.x = this.canvas.width / 2;
+        this.y = this.canvas.height - 30;
+        this.dx = 2;
+        this.dy = -2;
+        this.brickRow = this.levels[this.nextLevelIndex].tilesRow;
+        this.brickColumn = this.levels[this.nextLevelIndex].tilesColumn;
+        this.brickCount = this.brickRow * this.brickColumn;
+        this.bricks = [];
+        this.bricksObjectArray();
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.drawBricks();
 
-        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 150, 30, `Score: ${this.points}`)
+        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 250, 30, `Lives: ${this.lives}    Score: ${this.points}`)
         score.drawScore();
         // const color = "assets/balls/ball1.png";
         var ball = new Ball(this.ctx, 20, 20, this.ballImage, this.x, this.y);
@@ -184,16 +205,8 @@ class Game {
             winLevelMessage.drawWinMessage();
 
             this.nextLevelIndex += 1;
-            this.x = this.canvas.width / 2;
-            this.y = this.canvas.height - 30;
-            this.dx = 2;
-            this.dy = -2;
-            this.brickRow = this.levels[this.nextLevelIndex].tilesRow;
-            this.brickColumn = this.levels[this.nextLevelIndex].tilesColumn;
-            this.brickCount = this.brickRow * this.brickColumn;
+            this.reset();
             var renderTime = this.levels[this.nextLevelIndex].renderTime
-            this.bricks = [];
-            this.bricksObjectArray();
 
             const nextLevel = document.getElementById("next-level");
             clearInterval(this.interval);
