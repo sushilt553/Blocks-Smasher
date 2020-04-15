@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             onAudio();
             onMusic();
         }
-        gameMusic.play();    
+        gameMusic.play();   
+        gameMusic.loop = true; 
     };
 
     mute.onclick = () => {

@@ -122,3 +122,10 @@ p {
 .red {
     color: red;
 }
+
+strong {
+    border: 2px solid white;
+    color: black;
+    padding: 3px;
+    background-color: white;
+}
