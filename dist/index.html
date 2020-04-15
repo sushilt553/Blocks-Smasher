@@ -5,14 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blocks Smasher</title>
     <link rel="stylesheet" href="./assets//game.css">
+    <script src="https://kit.fontawesome.com/6bd696cce4.js" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </head>
 <body>
+    <audio id="game-start" class="game-music">
+        <source src="assets/sounds/game_start.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="brick-smash" class="sound">
+        <source src="assets/sounds/brick_smash.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wall-hit" class="sound">
+        <source src="assets/sounds/wall_hit.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="lose-game" class="sound">
+        <source src="assets/sounds/lose_game.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="level-finish" class="sound">
+        <source src="assets/sounds/level_finish.mp3" type="audio/mpeg">
+    </audio>
+    <div class="sound-buttons">
+        <i class="fas fa-volume-up volume-up" ></i>
+        <i class="fas fa-volume-mute volume-down" ></i>
+    </div>
     <canvas id="myCanvas" width="900" height="650" ></canvas>
     <h1 id="welcome">WELCOME TO BLOCKS SMASHER</h1>
     <canvas id="home-page" width="200" height="200" ></canvas>
     <canvas id="restart-button" class="hidden" width="50" height="50" ></canvas>
     <h2 id="next-level">NEXT LEVEL</h2>
+    
+    <!-- <script>
+        let sound = document.getElementById("game-start");
+        sound.currentTime = 0;
+        sound.loop = true; //if you want it to restart playing automatically when it ends
+        sound.play();
+    </script> -->
     <!-- class="hidden" -->
     <!-- <button id="play-button">Play</button>
     <button id="restart"><img width="50" height="50" src="assets/playRestart/restartButton.png"/></button> -->

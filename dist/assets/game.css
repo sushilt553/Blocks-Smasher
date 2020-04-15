@@ -1,10 +1,21 @@
+body {
+    background-image: url("./background/background11.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 #myCanvas {
     position: relative;
     display: block;
     margin: 0 auto;
-    background-image: url("./background/background2.jpg");
+    border: 10px groove skyblue;
+    /* background-image: url("./background/background10.png"); */
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#mute {
+    background-color: green;
 }
 
 #home-page {
@@ -12,7 +23,7 @@
     left: 45%;
     top: 270px;
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     background-image: url("./playRestart/playButton.png");
     background-size: cover;
 }
@@ -41,4 +52,28 @@ h1 {
 .display {
     display: block;
     height: 50px;
+}
+
+.sound-buttons {
+    margin-left: 27%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.volume-up {
+    margin-right: 10px;
+}
+
+.volume-up,
+.volume-down {
+    font-size: 30px;
+    color: white;
+}
+
+.green {
+    color: greenyellow;
+}
+
+.red {
+    color: red;
 }

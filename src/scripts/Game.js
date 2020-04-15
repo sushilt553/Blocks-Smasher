@@ -7,11 +7,15 @@ import ballImages from './BallsImages';
 import tileImages from './TilesImages';
 import { paddleImage } from './PaddleImage';
 import levelsArray from './levels/Levels';
-import { brick_smash, lose_game } from './Sounds';
+// import { brick_smash, lose_game, wall_hit } from './Sounds';
 import WinLevel from './WinLevel';
 
 class Game {
     constructor (canvas, ctx) {
+        this.brickSmash = document.getElementById("brick-smash");
+        this.wallHit = document.getElementById("wall-hit");
+        this.loseGame = document.getElementById("lose-game");
+        this.levelFinish = document.getElementById("level-finish");
         this.canvas = canvas;
         this.ctx = ctx;
         this.levels = levelsArray;
@@ -92,7 +96,7 @@ class Game {
                 return true;
                 // this.dx += 1;
             }else {
-                lose_game();
+                this.loseGame.play();
                 const restart = document.getElementById("restart-button");
                 restart.classList.add("display");
                 restart.onclick = () => document.location.reload();
@@ -200,11 +204,11 @@ class Game {
         }
 
         if (this.detectCollision()) {
-            brick_smash();
+            this.brickSmash.play();
         };
             
         if (this.checkWallHit()) {
-            brick_smash();
+            this.wallHit.play();
         }
 
         if (this.rightClick) {
