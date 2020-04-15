@@ -5,10 +5,11 @@ import Score from './Score';
 import GameOver from './GameOver';
 import ballImages from './BallsImages';
 import tileImages from './TilesImages';
-import { paddleImage } from './PaddleImage';
+import { paddleImage, liveImage } from './PaddleImage';
 import levelsArray from './levels/Levels';
 // import { brick_smash, lose_game, wall_hit } from './Sounds';
 import WinLevel from './WinLevel';
+import Live from './Live';
 
 class Game {
     constructor (canvas, ctx) {
@@ -28,6 +29,8 @@ class Game {
         this.dy = -2;
 
         this.ballImage = ballImages[Math.floor(Math.random() * ballImages.length)];
+
+        this.liveImage = liveImage;
 
         this.brickRow = this.levels[0].tilesRow;
         this.brickColumn = this.levels[0].tilesColumn;
@@ -199,7 +202,9 @@ class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 250, 30, `Lives: ${this.lives}    Score: ${this.points}`)
+        var live = new Live(this.ctx, 35, 30, this.canvas.width - 240, 5, this.liveImage); 
+        live.drawLive();
+        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 200, 30, `x ${this.lives}     Score: ${this.points}`)
         score.drawScore();
 
         if (this.lives === 0) {
