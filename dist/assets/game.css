@@ -31,17 +31,18 @@ body {
 #restart-button {
     position: absolute;
     left: 49%;
-    top: 350px;
+    top: 420px;
     background-image: url("./playRestart/restartButton.png");
     background-size: cover;
 }
 
 h1 {
-    color: wheat;
+    color: #fcde91;
     position: absolute;
+    letter-spacing: 0.1em;
     font-size: 40px;
     top: 180px;
-    left: 35%;
+    left: 30%;
 }
 
 .hidden {

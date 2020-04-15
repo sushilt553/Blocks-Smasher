@@ -48,6 +48,9 @@ class Game {
 
         this.rightClick = false;
         this.leftClick = false;
+        this.spaceClick = true;
+
+        this.spaceClickEvent = this.spaceClickEvent.bind(this);
 
         this.draw = this.draw.bind(this);
         this.checkWallHit = this.checkWallHit.bind(this);
@@ -65,8 +68,25 @@ class Game {
         this.start = this.start.bind(this);
         this.start(this.levels[0].renderTime);
 
+        this.prevdx = this.dx;
+        this.prevdy = this.dy;
+
         document.addEventListener("keydown", this.onClick);
         document.addEventListener("keyup", this.offClick);
+
+        document.addEventListener("keypress", this.spaceClickEvent);
+    }
+
+    spaceClickEvent(e) {
+        if (e.keyCode === 32 && this.spaceClick) {
+            this.dx = 0;
+            this.dy = 0;
+            this.spaceClick = false;
+        } else if (this.spaceClick || e.keyCode === 32) {
+            this.dx = this.prevdx;
+            this.dy = this.prevdy;
+            this.spaceClick = true;
+        }
     }
 
     onClick(e) {
@@ -88,32 +108,23 @@ class Game {
     checkWallHit() {
         if (this.x + this.dx > this.canvas.width - this.ballRadius || this.x + this.dx < this.ballRadius) {
             this.dx = - this.dx;
+            this.prevdx = this.dx;
             return true;
             // this.dy -= 1;
         }else if(this.y + this.dy < this.ballRadius) {
             this.dy = - this.dy;
+            this.prevdy = this.dy;
             return true;
         }else if (this.y + this.dy > this.canvas.height - this.ballRadius - this.paddleHeight) {
             if (this.x > this.paddleX && this.x < this.paddleX + this.paddleWidth) {
                 this.dy = - this.dy;
+                this.prevdy = this.dy;
                 return true;
                 // this.dx += 1;
             }else {
                 this.loseGame.play();
                 this.lives -= 1;
-                if (this.lives === 0){
-                    const restart = document.getElementById("restart-button");
-                    restart.classList.add("display");
-                    restart.onclick = () => document.location.reload();
-                    
-                    var text = `Game Over!! Your score is ${this.points}`
-                    var gameOver = new GameOver(this.canvas, this.ctx, text)
-                    gameOver.drawFinalScore();
-                    // gameOver.drawRestartButton();
-                    clearInterval(this.interval);
-                }else{
-                    this.reset();
-                }
+                this.reset();
 
             }
         }
@@ -139,6 +150,7 @@ class Game {
                 if (brick.status) {
                     if ((this.x > brick.x && this.x < brick.x + this.brickWidth) && (this.y > brick.y && this.y < brick.y + this.brickHeight)) {
                         this.dy = - this.dy;
+                        this.prevdy = this.dy;
                         brick.status = false;
                         this.points += 1;
                         this.brickCount -= 1;
@@ -187,11 +199,22 @@ class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        this.drawBricks();
-
         var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 250, 30, `Lives: ${this.lives}    Score: ${this.points}`)
         score.drawScore();
+
+        if (this.lives === 0) {
+            const restart = document.getElementById("restart-button");
+            restart.classList.add("display");
+            restart.onclick = () => document.location.reload();
+            
+            var text = `Game Over!! Your score is ${this.points}`
+            var gameOver = new GameOver(this.canvas, this.ctx, text)
+            gameOver.drawFinalScore();
+            // gameOver.drawRestartButton();
+            clearInterval(this.interval);
+        }
+
+        this.drawBricks();
         // const color = "assets/balls/ball1.png";
         var ball = new Ball(this.ctx, 20, 20, this.ballImage, this.x, this.y);
         // var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
@@ -236,6 +259,7 @@ class Game {
 
         this.x += this.dx;
         this.y += this.dy;
+
     }
 }
 
