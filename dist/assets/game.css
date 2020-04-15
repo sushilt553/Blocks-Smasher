@@ -15,6 +15,14 @@ body {
     background-repeat: no-repeat;
 }
 
+.addBackground {
+    background-color: black;
+}
+
+.removeBackground {
+    background-color: transparent;
+}
+
 #mute {
     background-color: green;
 }
@@ -54,7 +62,7 @@ p {
 #home-page {
     position: absolute;
     left: 45%;
-    top: 270px;
+    top: 420px;
     display: block;
     /* margin: 0 auto; */
     background-image: url("./playRestart/playButton.png");
@@ -82,12 +90,18 @@ p {
 }
 
 #welcome {
-    color: #fcde91;
+    /* color: #fcde91; */
+    /* color: #cbb3ff;
     position: absolute;
     letter-spacing: 0.1em;
     font-size: 40px;
     top: 180px;
-    left: 30%;
+    left: 30%; */
+    width: 900px;
+    height: 350px;
+    position: absolute;
+    top: 70px;
+    left: 26%;
 }
 
 .hidden {
