@@ -71,8 +71,8 @@ p {
 
 #restart-button {
     position: absolute;
-    left: 49%;
-    top: 420px;
+    left: 47%;
+    top: 520px;
     background-image: url("./playRestart/restartButton.png");
     background-size: cover;
 }

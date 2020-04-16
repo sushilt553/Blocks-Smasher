@@ -10,6 +10,7 @@ import levelsArray from './levels/Levels';
 // import { brick_smash, lose_game, wall_hit } from './Sounds';
 import WinLevel from './WinLevel';
 import Live from './Live';
+import Complete from './Complete';
 
 class Game {
     constructor (canvas, ctx) {
@@ -233,16 +234,27 @@ class Game {
             winLevelMessage.drawWinMessage();
             
             this.nextLevelIndex += 1;
-            this.reset();
-            var renderTime = this.levels[this.nextLevelIndex].renderTime
-            
-            clearInterval(this.interval);
-            const nextLevel = document.getElementById("next-level");
-            nextLevel.classList.add("display");
-            this.levelFinish.play();
-            nextLevel.onclick = () => {
-                nextLevel.classList.remove("display");
-                this.start(renderTime);
+            if (this.nextLevelIndex < 5) {
+                this.reset();
+                var renderTime = this.levels[this.nextLevelIndex].renderTime
+                
+                clearInterval(this.interval);
+                const nextLevel = document.getElementById("next-level");
+                nextLevel.classList.add("display");
+                this.levelFinish.play();
+                nextLevel.onclick = () => {
+                    nextLevel.classList.remove("display");
+                    this.start(renderTime);
+                }
+            }else{
+                this.dx = 0;
+                this.dy = 0;
+                const text = "ALL LEVELS COMPLETED"
+                const complete = new Complete(this.canvas, this.ctx, text);
+                complete.drawComplete();
+                const restart = document.getElementById("restart-button");
+                restart.classList.add("display");
+                restart.onclick = () => document.location.reload();
             }
 
         }
