@@ -22,4 +22,10 @@ const level4 = {
     renderTime: 5
 }
 
-export default [level1, level2, level3, level4]
+const level5 = {
+    tilesRow: 5,
+    tilesColumn: 5,
+    renderTime: 4
+}
+
+export default [level1, level2, level3, level4, level5]

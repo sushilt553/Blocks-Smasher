@@ -231,14 +231,15 @@ class Game {
         if (this.brickCount === 0) {
             var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congrats you won this level!");
             winLevelMessage.drawWinMessage();
-
+            
             this.nextLevelIndex += 1;
             this.reset();
             var renderTime = this.levels[this.nextLevelIndex].renderTime
-
+            
             clearInterval(this.interval);
             const nextLevel = document.getElementById("next-level");
             nextLevel.classList.add("display");
+            this.levelFinish.play();
             nextLevel.onclick = () => {
                 nextLevel.classList.remove("display");
                 this.start(renderTime);
