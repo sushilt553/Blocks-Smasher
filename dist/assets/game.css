@@ -89,6 +89,22 @@ p {
     color: white;
 }
 
+#pause {
+    position: absolute;
+    left: 46%;
+    top: 360px;
+    font-size: 40px;
+    color: white;
+}
+
+#space {
+    position: absolute;
+    left: 34%;
+    top: 440px;
+    font-size: 25px;
+    color: white;
+}
+
 #welcome {
     /* color: #fcde91; */
     /* color: #cbb3ff;

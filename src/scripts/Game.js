@@ -18,6 +18,8 @@ class Game {
         this.wallHit = document.getElementById("wall-hit");
         this.loseGame = document.getElementById("lose-game");
         this.levelFinish = document.getElementById("level-finish");
+        this.pause = document.getElementById("pause");
+        this.space = document.getElementById("space");
         this.canvas = canvas;
         this.ctx = ctx;
         this.levels = levelsArray;
@@ -83,10 +85,14 @@ class Game {
 
     spaceClickEvent(e) {
         if (e.keyCode === 32 && this.spaceClick) {
+            this.pause.classList.add("display");
+            this.space.classList.add("display");
             this.dx = 0;
             this.dy = 0;
             this.spaceClick = false;
         } else if (this.spaceClick || e.keyCode === 32) {
+            this.pause.classList.remove("display");
+            this.space.classList.remove("display");
             this.dx = this.prevdx;
             this.dy = this.prevdy;
             this.spaceClick = true;
