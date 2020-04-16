@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcome = document.getElementById("welcome");
     const instructions = document.getElementById("play-div");
     const player = document.getElementById("player-name");
+    const selectBall = document.getElementById("select-balls");
     
     play.addEventListener("click", () => {
         var playerName;
@@ -42,6 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             playerName = "User"
         }
+
+        var ball;
+        if (selectBall.value === "--Choose a ball--") {
+            ball = document.getElementById("golfball");
+        }else{
+            ball = document.getElementById(selectBall.value);
+        }
+
         
         muteMusic();
         instructions.classList.add("hidden");
@@ -49,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         play.classList.add("hidden");
         welcome.classList.add("hidden");
         player.classList.add("hidden");
-        new Game(canvas, ctx, playerName);
+        selectBall.classList.add("hidden");
+        new Game(canvas, ctx, playerName, ball);
     })
 })

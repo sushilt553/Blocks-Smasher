@@ -3,7 +3,7 @@ import Brick from './Brick';
 import Paddle from './Paddle';
 import Score from './Score';
 import GameOver from './GameOver';
-import ballImages from './BallsImages';
+// import ballImages from './BallsImages';
 import tileImages from './TilesImages';
 import { paddleImage, liveImage } from './PaddleImage';
 import levelsArray from './levels/Levels';
@@ -14,7 +14,7 @@ import Complete from './Complete';
 import Player from './Player';
 
 class Game {
-    constructor (canvas, ctx, playerName) {
+    constructor (canvas, ctx, playerName, ball) {
         this.brickSmash = document.getElementById("brick-smash");
         this.wallHit = document.getElementById("wall-hit");
         this.loseGame = document.getElementById("lose-game");
@@ -24,6 +24,7 @@ class Game {
         this.canvas = canvas;
         this.ctx = ctx;
         this.playerName = playerName;
+        this.ball = ball;
         this.levels = levelsArray;
         this.nextLevelIndex = 0;
 
@@ -33,7 +34,7 @@ class Game {
         this.dx = 2;
         this.dy = -2;
 
-        this.ballImage = ballImages[Math.floor(Math.random() * ballImages.length)];
+        // this.ballImage = ballImages[Math.floor(Math.random() * ballImages.length)];
 
         this.liveImage = liveImage;
 
@@ -224,7 +225,7 @@ class Game {
             restart.classList.add("display");
             restart.onclick = () => document.location.reload();
             
-            var text = `Game Over!! Your score is ${this.points}`
+            var text = `Game Over!!! Your score is ${this.points}`
             var gameOver = new GameOver(this.canvas, this.ctx, text)
             gameOver.drawFinalScore();
             // gameOver.drawRestartButton();
@@ -233,7 +234,7 @@ class Game {
 
         this.drawBricks();
         // const color = "assets/balls/ball1.png";
-        var ball = new Ball(this.ctx, 20, 20, this.ballImage, this.x, this.y);
+        var ball = new Ball(this.ctx, 20, 20, this.ball, this.x, this.y);
         // var ball = new Ball(this.ctx, this.x, this.y, this.ballRadius);
         var paddle = new Paddle(this.canvas, this.ctx, this.paddleHeight, this.paddleWidth, this.paddleX, paddleImage);
 
@@ -241,7 +242,7 @@ class Game {
         paddle.drawPaddle();
 
         if (this.brickCount === 0) {
-            var winLevelMessage = new WinLevel(this.canvas, this.ctx, `Congrats ${this.playerName}! You won this level.`);
+            var winLevelMessage = new WinLevel(this.canvas, this.ctx, `Congrats! You won this level.`);
             winLevelMessage.drawWinMessage();
             
             this.nextLevelIndex += 1;

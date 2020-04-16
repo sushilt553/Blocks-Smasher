@@ -25,16 +25,25 @@
     <audio id="level-finish" class="sound">
         <source src="assets/sounds/level_finish.wav" type="audio/mpeg">
     </audio>
+
+    <img id="baseball" src="assets/balls/ball1.png" class="hidden" />
+    <img id="basketball" src="assets/balls/ball2.png" class="hidden" />
+    <img id="golfball" src="assets/balls/ball3.png" class="hidden" />
+    <img id="tennisball" src="assets/balls/ball4.png" class="hidden" />
+    <img id="grassball" src="assets/balls/ball5.png" class="hidden" />
+    <img id="rainbowball" src="assets/balls/ball6.png" class="hidden" />
+    <img id="discoball" src="assets/balls/ball7.png" class="hidden" />
     
     <div class="main">
     <section id="play-section">
         <div id="play-div">
             <h1 id="how-to-play">HOW TO PLAY</h1>
-            <li >Click <img id="how-to-play-button" src="assets/playRestart/playButton.png" /> to begin.</li> 
-            <li>Use the <img id="keys" src="assets/paddle/keyboard.png"> keys on your keyboard.</li> 
+            <li class="keyboard">Use the <img id="keys" src="assets/paddle/keyboard.png"> keys on your keyboard to control the paddle.</li> 
             <p class="des">The ball will bounce in different directions based on where it hits the paddle. You are in control of the sliding paddle that can bounce the ball into the bricks above.
             You can use angles and rebounds to control the direction the ball moves and smash the bricks. You have 3 lives. If the ball falls into the abyss below, you'll lose a life.
-            You can also use the <strong>SPACEBAR</strong> to pause/continue the game anytime.</p>
+            You can also use the <strong>SPACEBAR</strong> to pause/resume the game anytime.</p>
+            <p class="des italic">*Name and ball selection are optional.</p>
+            <li>Click <img id="how-to-play-button" src="assets/playRestart/playButton.png" /> to begin.</li> 
         </div>
     </section>
     <section id="main-section">
@@ -44,7 +53,20 @@
         </div>
         <canvas id="myCanvas" width="900" height="650" class="addBackground" ></canvas>
         <img id="welcome" src="assets/paddle//blocks_smasher.png" alt="">
-        <input id="player-name" type="text" placeholder="Please enter your name" maxlength="8">
+        <div class="choose-player">
+            <input id="player-name" type="text" placeholder="Please enter your name" maxlength="8">
+            <select id="select-balls">
+                <option selected disabled>--Choose a ball--</option>
+                <option  value="baseball">Baseball</option>
+                <option  value="basketball">Basketball</option>
+                <option  value="golfball">Golf ball</option>
+                <option  value="tennisball">Tennis ball</option>
+                <option  value="grassball">Grass ball</option>
+                <option  value="rainbowball">Rainbow ball</option>
+                <option  value="discoball">Disco ball</option>
+            </select>
+        </div>
+
         <canvas id="home-page" width="200" height="200" ></canvas>
         <canvas id="restart-button" class="hidden" width="50" height="50" ></canvas>
         <button id="next-level" class="hidden">NEXT LEVEL</button>

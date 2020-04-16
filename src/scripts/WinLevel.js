@@ -8,7 +8,7 @@ class WinLevel {
     drawWinMessage() {
         this.ctx.font = "50px Consolas";
         this.ctx.fillStyle = "white";
-        this.ctx.fillText(this.text, 65, (this.canvas.height / 2) - 20);
+        this.ctx.fillText(this.text, 170, (this.canvas.height / 2) - 20);
     }
 }
 

@@ -120,15 +120,14 @@ p {
 
 input {
     /* position: absolute; */
-    display: block;
+    /* display: block; */
     height: 30px;
     padding-left: 20px;
     font-size: 15px;
     color: red;
     width: 180px;
-    margin: 0 auto;
-    margin-top: 30px;
-    border-radius: 10px;
+    /* margin: 0 auto; */
+    border-radius: 5px;
     border: 2px solid red;
 }
 
@@ -188,3 +187,39 @@ strong {
     padding: 3px;
     background-color: white;
 }
+
+.choose-player {
+    display: flex;
+    margin-top: 15px;
+    margin-left: 225px;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+#select-balls {
+    /* position: absolute; */
+    /* display: block; */
+    height: 36px;
+    margin-left: 50px;
+    font-size: 15px;
+    width: 210px;
+    color: red;
+    /* margin: 0 auto; */
+    /* border-radius: 50px; */
+    border: 2px solid red;
+}
+
+.italic {
+    font-style: italic;
+    color: lightcoral;
+    letter-spacing: 0.2em;
+}
+
+.keyboard {
+    color: lightcoral;
+}
+
+::placeholder {
+    color: red;
+}
+
