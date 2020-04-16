@@ -2,11 +2,16 @@ body {
     background-image: url("./background/background11.png");
     background-size: cover;
     background-repeat: no-repeat;
+    /* display: flex; */
+}
+
+.main {
     display: flex;
+    justify-content: center;
 }
 
 #myCanvas {
-    position: relative;
+    /* position: relative; */
     display: block;
     margin: 0 auto;
     border: 10px groove skyblue;
@@ -27,9 +32,12 @@ body {
     background-color: green;
 }
 
-#play-section {
+#play-div {
+    position: absolute;
     color: white;
-    width: 25%;
+    top: 240px;
+    left: 30%;
+    width: 40%;
     margin-top: 5%;
 }
 
@@ -50,21 +58,26 @@ body {
 li {
     display: flex;
     align-items: center;
+    justify-content: center;
     letter-spacing: 0.1em;
 }
 
+.des {
+    text-align: center;
+}
+
 p {
-    margin-left: 8%;
+    /* margin-left: 8%; */
     letter-spacing: 0.1em;
     line-height: 1.5em;
 }
 
 #home-page {
-    position: absolute;
-    left: 45%;
-    top: 420px;
+    /* position: absolute; */
+    /* left: 45%; */
+    /* top: 420px; */
     display: block;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     background-image: url("./playRestart/playButton.png");
     background-size: cover;
 }
@@ -99,10 +112,24 @@ p {
 
 #space {
     position: absolute;
-    left: 34%;
+    left: 42%;
     top: 440px;
     font-size: 25px;
     color: white;
+}
+
+input {
+    /* position: absolute; */
+    display: block;
+    height: 30px;
+    padding-left: 20px;
+    font-size: 15px;
+    color: red;
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid red;
 }
 
 #welcome {
@@ -113,11 +140,13 @@ p {
     font-size: 40px;
     top: 180px;
     left: 30%; */
-    width: 900px;
-    height: 350px;
+    /* width: 888px;
+     */
+    width: 40%;
+    height: 280px;
     position: absolute;
     top: 70px;
-    left: 26%;
+    left: 30%;
 }
 
 .hidden {

@@ -33,13 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const play = document.getElementById("home-page");
     const welcome = document.getElementById("welcome");
     const instructions = document.getElementById("play-div");
+    const player = document.getElementById("player-name");
     
     play.addEventListener("click", () => {
+        var playerName;
+        if (player.value){
+            playerName = player.value
+        }else{
+            playerName = "User"
+        }
+        
         muteMusic();
         instructions.classList.add("hidden");
         canvas.classList.add("removeBackground");
         play.classList.add("hidden");
         welcome.classList.add("hidden");
-        new Game(canvas, ctx);
+        player.classList.add("hidden");
+        new Game(canvas, ctx, playerName);
     })
 })

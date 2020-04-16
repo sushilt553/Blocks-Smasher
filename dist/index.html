@@ -9,6 +9,7 @@
     <script src="main.js"></script>
 </head>
 <body>
+    
     <audio id="game-start" class="game-music">
         <source src="assets/sounds/game_start.mp3" type="audio/mpeg">
     </audio>
@@ -25,16 +26,15 @@
         <source src="assets/sounds/level_finish.wav" type="audio/mpeg">
     </audio>
     
+    <div class="main">
     <section id="play-section">
         <div id="play-div">
             <h1 id="how-to-play">HOW TO PLAY</h1>
-            <ul>
-                <li >Click <img id="how-to-play-button" src="assets/playRestart/playButton.png" /> to begin.</li> 
-                <li>Use the <img id="keys" src="assets/paddle/keyboard.png"> keys on your keyboard.</li> 
-            </ul>
-            <p>The ball will bounce in different directions based on where it hits the paddle. You are in control of the sliding paddle that can bounce the ball into the bricks above.</p>
-            <p>You can use angles and rebounds to control the direction the ball moves and smash the bricks. You have 3 lives. If the ball falls into the abyss below, you'll lose a life. </p>
-            <p>You can also use the <strong>SPACEBAR</strong> to pause/continue the game anytime.</p>
+            <li >Click <img id="how-to-play-button" src="assets/playRestart/playButton.png" /> to begin.</li> 
+            <li>Use the <img id="keys" src="assets/paddle/keyboard.png"> keys on your keyboard.</li> 
+            <p class="des">The ball will bounce in different directions based on where it hits the paddle. You are in control of the sliding paddle that can bounce the ball into the bricks above.
+            You can use angles and rebounds to control the direction the ball moves and smash the bricks. You have 3 lives. If the ball falls into the abyss below, you'll lose a life.
+            You can also use the <strong>SPACEBAR</strong> to pause/continue the game anytime.</p>
         </div>
     </section>
     <section id="main-section">
@@ -43,8 +43,8 @@
             <i class="fas fa-volume-mute volume-down" ></i>
         </div>
         <canvas id="myCanvas" width="900" height="650" class="addBackground" ></canvas>
-        <!-- <h1 id="welcome">WELCOME TO BLOCKS SMASHER</h1> -->
         <img id="welcome" src="assets/paddle//blocks_smasher.png" alt="">
+        <input id="player-name" type="text" placeholder="Please enter your name" maxlength="8">
         <canvas id="home-page" width="200" height="200" ></canvas>
         <canvas id="restart-button" class="hidden" width="50" height="50" ></canvas>
         <button id="next-level" class="hidden">NEXT LEVEL</button>
@@ -63,5 +63,6 @@
     <button id="restart"><img width="50" height="50" src="assets/playRestart/restartButton.png"/></button> -->
     <!-- <a href='https://pngtree.com/so/game-icon'>game-icon png from pngtree.com</a>
     <a href='https://pngtree.com/so/icon'>icon png from pngtree.com</a> -->
+    </div>
 </body>
 </html>

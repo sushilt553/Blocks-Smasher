@@ -11,9 +11,10 @@ import levelsArray from './levels/Levels';
 import WinLevel from './WinLevel';
 import Live from './Live';
 import Complete from './Complete';
+import Player from './Player';
 
 class Game {
-    constructor (canvas, ctx) {
+    constructor (canvas, ctx, playerName) {
         this.brickSmash = document.getElementById("brick-smash");
         this.wallHit = document.getElementById("wall-hit");
         this.loseGame = document.getElementById("lose-game");
@@ -22,6 +23,7 @@ class Game {
         this.space = document.getElementById("space");
         this.canvas = canvas;
         this.ctx = ctx;
+        this.playerName = playerName;
         this.levels = levelsArray;
         this.nextLevelIndex = 0;
 
@@ -209,6 +211,9 @@ class Game {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        var player = new Player(this.ctx, "30px", "Consolas", "white", 5, 30, `Welcome ${this.playerName}!`);
+        player.drawName();
         var live = new Live(this.ctx, 35, 30, this.canvas.width - 240, 5, this.liveImage); 
         live.drawLive();
         var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 200, 30, `x ${this.lives}     Score: ${this.points}`)
@@ -236,7 +241,7 @@ class Game {
         paddle.drawPaddle();
 
         if (this.brickCount === 0) {
-            var winLevelMessage = new WinLevel(this.canvas, this.ctx, "Congrats you won this level!");
+            var winLevelMessage = new WinLevel(this.canvas, this.ctx, `Congrats ${this.playerName}! You won this level.`);
             winLevelMessage.drawWinMessage();
             
             this.nextLevelIndex += 1;
