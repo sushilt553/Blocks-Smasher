@@ -1,5 +1,5 @@
 ![](https://github.com/sushilt553/Blocks-Smasher/blob/master/dist/assets/paddle/blocks_smasher.png)
-
+# [Play Game](https://sushilt553.github.io/Blocks-Smasher/dist/index.html)
 ## Overview
 Blocks Smasher is a modified version of a popular in-browser game, Brick Breaker.
 This game uses new JavaScript ES6 class syntax that allows for the easy breakdown of all in-game objects. The game graphics were created with the Canvas API. The game also features different audio sounds throughout the different moments of the game. For example, game start, level change, collision effects (bricks, wall, paddle), and game over. 
