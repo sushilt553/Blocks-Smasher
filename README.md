@@ -2,7 +2,7 @@
 # [Play Game](https://sushilt553.github.io/Blocks-Smasher/dist/index.html)
 ## Overview
 Blocks Smasher is a modified version of a popular in-browser game, Brick Breaker.
-This game uses new JavaScript ES6 class syntax that allows for the easy breakdown of all in-game objects. The game graphics were created with the Canvas API. The game also features different audio sounds throughout the different moments of the game. For example, game start, level change, collision effects (bricks, wall, paddle), and game over. 
+This game uses new JavaScript ES6 class syntax that allows for the easy breakdown of all in-game objects. The game graphics were created with the Canvas API. The game has five levels and also features different audio sounds throughout the various moments of the game. For example, game start, level change, collision effects (bricks, wall, paddle), and game over. 
 
 ## Rules/Game instructions
 * User need to use the right and left arrow keys on the keyboard to control the paddle. The ball will bounce in different directions based on where it hits the paddle. 
@@ -11,7 +11,8 @@ This game uses new JavaScript ES6 class syntax that allows for the easy breakdow
 * User has 3 lives. 
 * If the ball falls outside the paddle, user will lose a life. 
 * User can also use the SPACEBAR to pause/resume the game anytime.
-* User can enter their name and select a ball for the game.
+* User can enter their name and select a ball for the game. 
+* User will have 7 ball choices to choose from.
 * User is able to mute or unmute the audio in the game. 
 * User should click PLAY button to begin.
 
