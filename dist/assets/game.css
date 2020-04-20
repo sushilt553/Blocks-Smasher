@@ -160,8 +160,19 @@ input {
 }
 
 .sound-buttons {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.link-logo {
+    color: white;
+    font-size: 30px;
+}
+
+.github {
+    margin-right: 20px;
 }
 
 .volume-up {
