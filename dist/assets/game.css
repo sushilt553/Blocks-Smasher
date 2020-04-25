@@ -171,7 +171,7 @@ input {
     font-size: 30px;
 }
 
-.github {
+.github, .linkedin {
     margin-right: 23px;
 }
 
@@ -233,3 +233,13 @@ strong {
     color: red;
 }
 
+.portfolio {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.profile-pic {
+    width: 34px;
+    height: 34px;
+}
