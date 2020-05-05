@@ -1,5 +1,6 @@
 body {
     background-image: url("./background/background11.png");
+    /* height: 100vh; */
     background-size: cover;
     background-repeat: no-repeat;
     /* display: flex; */
@@ -143,9 +144,9 @@ input {
     /* width: 888px;
      */
     width: 40%;
-    height: 29%;
+    height: 230px;
     position: absolute;
-    top: 74px;
+    top: 80px;
     left: 30%;
 }
 
