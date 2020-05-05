@@ -213,11 +213,11 @@ class Game {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        var player = new Player(this.ctx, "30px", "Consolas", "white", 5, 30, `Welcome ${this.playerName}!`);
+        var player = new Player(this.ctx, "30px", "Sans-serif", "white", 10, 30, `Welcome ${this.playerName}!`);
         player.drawName();
-        var live = new Live(this.ctx, 35, 30, this.canvas.width - 240, 5, this.liveImage); 
+        var live = new Live(this.ctx, 35, 30, this.canvas.width - 255, 5, this.liveImage); 
         live.drawLive();
-        var score = new Score(this.ctx, "30px", "Consolas", "white", this.canvas.width - 200, 30, `x ${this.lives}     Score: ${this.points}`)
+        var score = new Score(this.ctx, "30px", "Sans-serif", "white", this.canvas.width - 220, 30, `x ${this.lives}     Score: ${this.points}`)
         score.drawScore();
 
         if (this.lives === 0) {

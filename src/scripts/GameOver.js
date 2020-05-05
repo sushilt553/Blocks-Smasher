@@ -8,9 +8,9 @@ class GameOver {
     }
 
     drawFinalScore() {
-        this.ctx.font = "50px Consolas";
+        this.ctx.font = "50px Sans-serif";
         this.ctx.fillStyle = "white";
-        this.ctx.fillText(this.text, 180, this.canvas.height / 2);
+        this.ctx.fillText(this.text, 150, this.canvas.height / 2);
     }
 
     // drawRestartButton() {
